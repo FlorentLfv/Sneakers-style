@@ -6,10 +6,11 @@ const LikeBtn = (props) => {
     const { likes } = props;
 
     const [likesCount, setlikesCount] = useState(Number(likes))
-    const incrementCounter = () => setlikesCount((likesCount) => (likesCount += 1));
-    const decrementCounter = () => setlikesCount(likesCount - 1);
-
     const [liked, setLiked] = useState(false);
+    
+    const incrementCounter = (likeNumber) => setlikesCount(likeNumber += 1);
+    const decrementCounter = (likeNumber) => setlikesCount(likeNumber -= 1);
+
 
     return (
         <View style={styles.row}>
@@ -18,7 +19,7 @@ const LikeBtn = (props) => {
                 color='#2799fa'
                 size={25}
                 style={styles.buttonStyle}
-                onPress={() =>{likesCount == Number(likes) ? incrementCounter() : decrementCounter() ; setLiked((isLiked) => !isLiked);}} // {liked ? incrementCounter : decrementCounter}
+                onPress={() =>{likesCount == Number(likes) ? incrementCounter(likesCount) : decrementCounter(likesCount) ; setLiked((isLiked) => !isLiked);}}
             />
             <Text style={styles.likeNumber}>{likesCount}</Text>
         </View>
