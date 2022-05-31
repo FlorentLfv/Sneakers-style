@@ -18,7 +18,7 @@ export default CardBody;
 const styles = StyleSheet.create({
     image: {
         width: '100%',
-        height: 200,
+        height: 100,
         borderWidth: 1,
         borderColor: '#588ebc',
         borderRadius: 0,
@@ -26,12 +26,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 0,
     },
     title: {
+        height: 50,
         textTransform: 'uppercase',
         fontSize: 20,
         marginBottom: 15,
         marginLeft: 15,
     },
     description: {
+        height: 240,
         fontSize: 15,
         justifyContent: 'center',
         marginBottom: 15,

@@ -21,6 +21,7 @@ export default function App() {
       />
       <FlatList
         data={PRODUITS}
+        numColumns={2}
         renderItem={({ item }) =>
           <CustomCard
             price={item.price}

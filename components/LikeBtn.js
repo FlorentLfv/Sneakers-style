@@ -1,21 +1,26 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { Text, StyleSheet, View } from 'react-native';
-import { Button, IconButton } from 'react-native-paper';
-import { Icon } from 'react-native-vector-icons/FontAwesome5';
+import { IconButton } from 'react-native-paper';
 
 const LikeBtn = (props) => {
     const { likes } = props;
+
+    const [likesCount, setlikesCount] = useState(Number(likes))
+    const incrementCounter = () => setlikesCount((likesCount) => (likesCount += 1));
+    const decrementCounter = () => setlikesCount(likesCount - 1);
+
+    const [liked, setLiked] = useState(false);
+
     return (
-        // <Button icon="heart" mode="outlined" color='#2799fa' style={styles.buttonStyle} contentStyle={styles.buttonContent} onPress={() => console.log('Pressed')}>{likes}</Button>
         <View style={styles.row}>
             <IconButton
-                icon="heart"
+                icon={liked ? "heart" : "heart-outline"}
                 color='#2799fa'
                 size={25}
                 style={styles.buttonStyle}
-                onPress={() => console.log('Pressed')}
+                onPress={() =>{likesCount == Number(likes) ? incrementCounter() : decrementCounter() ; setLiked((isLiked) => !isLiked);}} // {liked ? incrementCounter : decrementCounter}
             />
-            <Text style={styles.likeNumber}>{likes}</Text>
+            <Text style={styles.likeNumber}>{likesCount}</Text>
         </View>
     )
 };
@@ -25,8 +30,7 @@ export default LikeBtn;
 const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
-        alignItems: 'flex-end',
-        justifyContent: 'flex-end',
+        alignItems: 'center',
     },
     buttonStyle: {
         margin: 0,
@@ -34,5 +38,6 @@ const styles = StyleSheet.create({
     likeNumber: {
         fontSize: 20,
         color: '#2799fa',
+        marginRight: 10,
     }
 });

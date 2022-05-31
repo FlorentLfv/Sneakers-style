@@ -29,6 +29,7 @@ export default CustomCard;
 
 const styles = StyleSheet.create({
     cardStyle: {
+        width: 180,
         borderWidth: 2,
         borderColor: '#588ebc',
         borderRadius: 0,
